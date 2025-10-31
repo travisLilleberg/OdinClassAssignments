@@ -19,4 +19,3 @@ end
 arr = [*1..20].shuffle
 p arr
 p bubble_sort(arr)
-#[0,2,2,3,4,78]
