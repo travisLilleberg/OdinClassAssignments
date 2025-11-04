@@ -46,12 +46,15 @@ def stock_picker_two(stocks)
       next
     end
 
+    # rubocop:disable Style/Next
+    # Maintaining the ongoing logic of the method is better than following arbitrary linting rules.
     if stocks[i] > stocks[last]
       # When resetting last, save [first,last] if its better than best.
       best = [first, last] if stocks[last] - stocks[first] > stocks[best[1]] - stocks[best[0]]
       last = i
       first = nil
     end
+    # rubocop:enable Style/Next
   end
 
   # One final check to see if the current first,last is better than best.
