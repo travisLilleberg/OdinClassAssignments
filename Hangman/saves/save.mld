@@ -1,0 +1,4 @@
+o:Hangman::GameState:@secret_wordI"unsigned:ET:@secret_letterso:Set:
+@hash}I"u;TTI"n;TTI"s;TTI"i;TTI"g;TTI"d;TTF:@correct_guesseso;	;
+}I"e;TTF:@incorrect_guesseso;	;
+}I"m;TTI"o;TTF:@turns_lefti	:@io0
