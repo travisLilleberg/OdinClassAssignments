@@ -5,8 +5,12 @@ require_relative 'lib/game_state'
 require_relative 'lib/random_word_generator'
 require_relative 'lib/game_serializer'
 
-puts 'Load previous game? (yn)'
-yn = $stdin.gets.chomp
+if File.exist?('./saves/save.mld')
+  puts 'Load previous game? (yn)'
+  yn = $stdin.gets.chomp
+else
+  yn = 'no'
+end
 
 if /^y(es)?$/.match?(yn)
   game_state = Hangman::GameSerializer.load
