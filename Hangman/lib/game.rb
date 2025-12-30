@@ -47,10 +47,13 @@ module Hangman
     def user_input
       @io.puts "\nGuess a letter (or type 'save' to save): "
       letter = gets.chomp.downcase
-      return letter if letter == 'save'
-      return false unless /^[a-z]{1}$/.match?(letter)
 
-      letter
+      case letter
+      in 'save' | /^[a-z]{1}$/
+        letter
+      else
+        false
+      end
     end
   end
 end

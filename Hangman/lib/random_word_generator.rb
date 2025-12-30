@@ -8,7 +8,7 @@ module Hangman
       f = File.open(target)
       lines = f.readlines.map(&:chomp)
       word = ''
-      word = lines[rand(0..lines.length)].chomp until word.length > 4 && word.length < 13
+      word = lines[rand(0..lines.length)] until word.length > 4 && word.length < 13
       f.close
 
       word

@@ -29,7 +29,6 @@ module Hangman
 
       @turns_left -= 1 unless success
 
-      display unless end_of_game?
       success
     end
 
