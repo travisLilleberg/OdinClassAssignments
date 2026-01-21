@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/ClassLength
 
 # An implementation of a linked list using Ruby.
 class LinkedList
@@ -15,8 +16,7 @@ class LinkedList
   end
 
   def initialize
-    @head = nil
-    @tail = nil
+    @head = @tail = nil
   end
 
   def append(value)
@@ -101,7 +101,9 @@ class LinkedList
   end
 
   def insert_at(target_index, *values)
-    if target_index < 1
+    raise IndexError if target_index < 0
+
+    if target_index == 0
       @head = insert_multiple_nodes(values, @head)
       return
     end
@@ -114,6 +116,30 @@ class LinkedList
         target_index -= 1
       end
     end
+
+    raise IndexError if target_index > 1
+  end
+
+  def remove_at(target_index)
+    raise IndexError if target_index < 0 || @head.nil?
+
+    if target_index == 0
+      @head = @head.next
+      return
+    end
+
+    iterate do |node|
+      if target_index == 1
+        raise IndexError if node.next.nil?
+
+        node.next = node.next.next
+        break
+      else
+        target_index -= 1
+      end
+    end
+
+    raise IndexError if target_index > 1
   end
 
   private
@@ -140,3 +166,4 @@ class LinkedList
 end
 
 # rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/ClassLength
